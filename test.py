@@ -53,12 +53,13 @@ for person in train_dir:
         #If training image contains none or more than faces, print an error message and exit
         if len(face_bounding_boxes) != 1:
             print(person + "/" + person_img + " contains none or more than one faces and can't be used for training.")
-            exit()
+            #exit()
         else:
             face_enc = face_recognition.face_encodings(face)[0]
             # Add face encoding for current image with corresponding label (name) to the training data
             encodings.append(face_enc)
             names.append(person)
+
 
 # Create and train the SVC classifier
 clf = svm.SVC(gamma='scale')
